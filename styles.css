@@ -1,0 +1,46 @@
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  padding: 30px 0;
+}
+
+#card-board {
+  display: grid;
+  grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  max-width: 600px;
+  margin: auto;
+}
+
+.card {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card.hide {
+  background-color: cadetblue;
+}
+
+.card.hide p {
+  visibility: hidden;
+}
+
+.card.finded {
+  background-color: crimson;
+}
