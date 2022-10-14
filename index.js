@@ -15,6 +15,7 @@ $(() => {
 
   // Ajout de l'event 'onclick' sur chaque carte
   $(".card").click((event) => {
+    // J'empêche de comptabiliser le clic sur une carte déjà trouvée
     if ($(event.currentTarget).hasClass("finded")) {
       return;
     }
