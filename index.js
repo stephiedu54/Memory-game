@@ -15,6 +15,9 @@ $(() => {
 
   // Ajout de l'event 'onclick' sur chaque carte
   $(".card").click((event) => {
+    if ($(event.currentTarget).hasClass("finded")) {
+      return;
+    }
     currentClickCpt++; // J'incrémente le compteur de clic de 1
 
     if (currentClickCpt === 1) {
