@@ -1,11 +1,21 @@
 $(() => {
+  // Fonction de positionnement aléatoire des cartes
+  const randomCards = () => {
+    $(".card").each(function () {
+      let randomPos = Math.floor(Math.random() * 12);
+      $(this).css("order", randomPos);
+    });
+  };
+
+  randomCards();
+
   // Initialisation des variables
   let currentClickCpt = 0;
   let dataImageShowed = "";
 
-  // Ajout de l'event onclick sur la carte
+  // Ajout de l'event onclick sur chaque carte
   $(".card").click((event) => {
-    currentClickCpt++;
+    currentClickCpt++; // J'incrémente le compteur de clic de 1
 
     if (currentClickCpt === 1) {
       // Premier clic
