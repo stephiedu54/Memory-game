@@ -13,38 +13,44 @@ $(() => {
   let currentClickCpt = 0;
   let dataImageShowed = "";
 
-  // Ajout de l'event onclick sur chaque carte
+  // Ajout de l'event 'onclick' sur chaque carte
   $(".card").click((event) => {
     currentClickCpt++; // J'incrémente le compteur de clic de 1
 
     if (currentClickCpt === 1) {
-      // Premier clic
-      // Je cache les images retournées (et non trouvées) avant
+      // Premier clic :
+      // je cache les images visibles (et non trouvées)
       $(".card").each(function () {
         if (!$(this).hasClass("finded")) {
-          $(this).addClass("hide");
+          $(this).addClass("hide").removeClass("clicked");
         }
       });
-      // Je stocke la data-image de la carte
+      // je stocke la data-image de la carte retournée dans la variable 'dataImageShowed'
       dataImageShowed = $(event.currentTarget).attr("data-image");
-      // Je retourne la carte
-      $(event.currentTarget).removeClass("hide");
+      // et je retourne la carte cliquée + je la marque 'clicked'
+      $(event.currentTarget).removeClass("hide").addClass("clicked");
     } else if (currentClickCpt === 2) {
-      // Deuxième clic
-      // Je vérifie si l'image a été trouvé
-      $(event.currentTarget).removeClass("hide");
-      if (dataImageShowed === $(event.currentTarget).attr("data-image")) {
-        // si l'image a été trouvé
-        $(".card").each(function () {
-          if (!$(this).hasClass("hide")) {
-            // et si les cartes sont retournées, je les marque finded
-            $(this).addClass("finded");
-          }
-        });
+      // Deuxième clic :
+      // j'empêche de pouvoir cliquer sur une carte marquée 'clicked'
+      if ($(event.currentTarget).hasClass("clicked")) {
+        currentClickCpt = 1; // si c'est le cas, je laisse mon compteur à 1
+      } else {
+        // je retourne la carte cliquée + je la marque 'clicked'
+        $(event.currentTarget).removeClass("hide").addClass("clicked");
+        // et je vérifie si l'image a été trouvée en comparant la data-image et 'dataImageShowed'
+        if (dataImageShowed === $(event.currentTarget).attr("data-image")) {
+          // si c'est le cas
+          $(".card").each(function () {
+            if (!$(this).hasClass("hide")) {
+              // et si les cartes sont retournées, je les marque 'finded'
+              $(this).addClass("finded");
+            }
+          });
+        }
+        // Après 2 clics, je remets mes variables à zéro pour le prochain tour
+        currentClickCpt = 0;
+        dataImageShowed = "";
       }
-
-      currentClickCpt = 0;
-      dataImageShowed = "";
     }
   });
 });
