@@ -13,6 +13,7 @@ $(() => {
   let currentClickCpt = 0;
   let dataImageShowed = "";
   let findedCard = 0;
+  let strokeCpt = 0;
 
   // Ajout de l'event 'onclick' sur chaque carte
   $(".card").click((event) => {
@@ -55,7 +56,10 @@ $(() => {
             endOfGame();
           }
         }
-        // Après 2 clics, je remets mes variables à zéro pour le prochain tour
+        // Après 2 clics, j'incrémente le nombre de coups
+        strokeCpt++;
+        $("#stroke-number").text(strokeCpt);
+        // et je remets mes variables à zéro pour le prochain tour
         currentClickCpt = 0;
         dataImageShowed = "";
       }
