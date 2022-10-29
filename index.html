@@ -5,20 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
-    <!-- Add google fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Add my CSS -->
+    <!-- My CSS -->
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <h1>MEMORY GAME</h1>
-    <p>Essayez de trouver les paires</p>
+    <header>
+      <div id="title">
+        <h1>MEMORY GAME</h1>
+        <p>Essayez de trouver les paires</p>
+      </div>
+      <div id="score">
+        <p>Nombre de coups : <span id="stroke-number"></span></p>
+      </div>
+    </header>
 
     <div id="card-board">
       <div class="card hide" data-image="ane">
