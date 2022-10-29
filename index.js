@@ -52,17 +52,18 @@ $(() => {
           });
           findedCard++; // J'incrémente le nombre de paires trouvées
           if (findedCard === 10) {
-            alert("Gagné !");
+            endOfGame();
           }
         }
         // Après 2 clics, je remets mes variables à zéro pour le prochain tour
         currentClickCpt = 0;
         dataImageShowed = "";
-        // Lorsque toutes les cartes ont été trouvées, c'est gagné : fin du jeu
-        // if (findedCard === 10) {
-        //   alert("Gagné !");
-        // }
       }
     }
   });
+
+  // Fin de jeu
+  const endOfGame = () => {
+    $("#win-text").css("visibility", "visible");
+  };
 });
