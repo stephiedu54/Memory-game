@@ -132,7 +132,7 @@ footer p {
     height: 65px;
     font-size: 1.1rem;
   }
-
+  
   #card-board {
     grid-template: repeat(5, 130px)/repeat(4, 130px);
     margin: 30px auto;
