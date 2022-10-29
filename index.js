@@ -12,6 +12,7 @@ $(() => {
   // Initialisation des variables
   let currentClickCpt = 0;
   let dataImageShowed = "";
+  let findedCard = 0;
 
   // Ajout de l'event 'onclick' sur chaque carte
   $(".card").click((event) => {
@@ -20,9 +21,8 @@ $(() => {
       return;
     }
     currentClickCpt++; // J'incrémente le compteur de clic de 1
-
+    // Premier clic :
     if (currentClickCpt === 1) {
-      // Premier clic :
       // je cache les images visibles (et non trouvées)
       $(".card").each(function () {
         if (!$(this).hasClass("finded")) {
@@ -33,8 +33,8 @@ $(() => {
       dataImageShowed = $(event.currentTarget).attr("data-image");
       // et je retourne la carte cliquée + je la marque 'clicked'
       $(event.currentTarget).removeClass("hide").addClass("clicked");
-    } else if (currentClickCpt === 2) {
       // Deuxième clic :
+    } else if (currentClickCpt === 2) {
       // j'empêche de pouvoir cliquer sur une carte marquée 'clicked'
       if ($(event.currentTarget).hasClass("clicked")) {
         currentClickCpt = 1; // si c'est le cas, je laisse mon compteur à 1
@@ -50,10 +50,18 @@ $(() => {
               $(this).addClass("finded");
             }
           });
+          findedCard++; // J'incrémente le nombre de paires trouvées
+          if (findedCard === 10) {
+            alert("Gagné !");
+          }
         }
         // Après 2 clics, je remets mes variables à zéro pour le prochain tour
         currentClickCpt = 0;
         dataImageShowed = "";
+        // Lorsque toutes les cartes ont été trouvées, c'est gagné : fin du jeu
+        // if (findedCard === 10) {
+        //   alert("Gagné !");
+        // }
       }
     }
   });
