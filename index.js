@@ -68,6 +68,9 @@ $(() => {
 
   // Fin de jeu
   const endOfGame = () => {
-    $("#win-text").css("visibility", "visible");
+    setTimeout(() => {
+      // J'affiche le message de fin de jeu au bout de 0.5s
+      $("#win-text").css("visibility", "visible");
+    }, "500");
   };
 });
